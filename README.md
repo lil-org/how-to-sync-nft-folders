@@ -4,9 +4,7 @@ organize nfts into folders and see the same custom folders in zora, opensea, rai
 
 what could be a good standard way to sync a custom folders structure?
 
-proposal:
-
-## nft folders + ethereum attestation service
+# wip approach using [eas](https://docs.attest.org)
 
 ### 1️⃣ upload `SyncedFolderSnapshot` json to ipfs
 ```swift
@@ -63,3 +61,32 @@ https://ipfs.decentralized-content.com/ipfs/bafkreibd7asvbxdgm7tntlgfecjsmt2rhmo
 
 ### 5️⃣ get nfts from an api of your choice
 use `SyncedFolderSnapshot` to display nfts in folders
+
+
+# alternative options
+
+using flat list
+
+```swift
+struct SyncedFolderSnapshot: Codable {
+    
+    let formatVersion: Int
+    let uuid: String
+    let nonce: Int
+    let timestamp: Int
+    let address: String
+    let nfts: NftInSyncedFolder
+    
+}
+
+struct NftInSyncedFolder: Codable {
+
+    let chainId: String
+    let tokenId: String
+    let address: String
+    let foldersPath: String // 🆕
+    
+}
+
+```
+
