@@ -90,3 +90,5 @@ struct NftInSyncedFolder: Codable {
 
 ```
 
+# feedback
+### please [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues)
