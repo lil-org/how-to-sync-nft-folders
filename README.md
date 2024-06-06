@@ -93,5 +93,7 @@ struct NftInSyncedFolder: Codable {
 
 #### ⁉️ include a preview image url with each nft to make folder content appear faster
 
+#### ⁉️ no folders in folders (max depth == 1)
+
 # feedback
 ### please [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues) or [create a pull request](https://github.com/lil-org/how-to-sync-nft-folders/pulls)
