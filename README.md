@@ -77,7 +77,7 @@ struct SyncedFolderSnapshot: Codable {
     let nonce: Int
     let timestamp: Int
     let address: String
-    let nfts: NftInSyncedFolder
+    let nfts: [NftInSyncedFolder]
     
 }
 
