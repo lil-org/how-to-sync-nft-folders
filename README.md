@@ -6,6 +6,8 @@ what could be a good standard way to sync a custom folders structure?
 
 # wip approach using [eas](https://docs.attest.org)
 
+read and write folders in 5 steps
+
 ### 1️⃣ upload `SyncedFolderSnapshot` json to ipfs
 ```swift
 struct SyncedFolderSnapshot: Codable {
