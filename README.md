@@ -65,7 +65,7 @@ use `SyncedFolderSnapshot` to display nfts in folders
 
 # alternative options
 
-using flat list
+#### ⁉️ using flat list
 
 ```swift
 struct SyncedFolderSnapshot: Codable {
@@ -87,8 +87,9 @@ struct NftInSyncedFolder: Codable {
     let foldersPath: String // 🆕
     
 }
-
 ```
+
+#### ⁉️ include a preview image url with each nft to make folder content appear faster
 
 # feedback
 ### please [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues) or [create a pull request](https://github.com/lil-org/how-to-sync-nft-folders/pulls)
