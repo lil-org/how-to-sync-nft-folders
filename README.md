@@ -14,7 +14,7 @@ struct SyncedFolderSnapshot: Codable {
     let uuid: String
     let nonce: Int
     let timestamp: Int
-    let address: String
+    let ownerAddress: String
     let rootFolder: SyncedFolder
     
 }
