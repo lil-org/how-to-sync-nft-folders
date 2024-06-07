@@ -69,7 +69,7 @@ query Attestation {
     }
 }
 ```
-or
+or try curl
 
 ```sh
 curl --request POST \
@@ -87,6 +87,12 @@ use `Snapshot` to display nfts in folders
 # alternative options
 
 #### ⁉️ include a preview image url with each nft to make folder content appear faster
+
+# projects
+
+[nft folder macos](https://folder.lil.org) wip
+
+add yours too!
 
 # feedback
 ### please [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues) or [create a pull request](https://github.com/lil-org/how-to-sync-nft-folders/pulls)
