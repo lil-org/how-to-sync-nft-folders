@@ -38,7 +38,7 @@ struct Token: Codable {
 ```swift
 let cid = "bafkreidphpnj4fwobwzk5ix4z4xprfxdablkm2wzqn6l4oinv3bt77rfvq"
 
-let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE"
+let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner
 let folderType: UInt32 = 0
 let formatVersion: UInt32 = 0
 let arguments = String.paddedHexString(cid: cid, folderType: folderType, formatVersion: formatVersion)
@@ -50,6 +50,27 @@ see [example new attestation url](https://base.easscan.org/attestation/attestWit
 
 ### 3️⃣ get the latest attestation
 using [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
+
+```graphql
+query Attestation {
+    attestations(
+        take: 1,
+        orderBy: { timeCreated: desc },
+        where: { 
+            schemaId: { equals: "0xb7cc934d4a5b37542520bfc80184538e568529d5fba5b13abe89109a23620cb6" }, 
+            recipient: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" },
+            attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" } 
+        }
+    ) {
+        attester
+        recipient
+        decodedDataJson
+        timeCreated
+    }
+}
+```
+or
+
 ```sh
 curl --request POST \
     --header 'content-type: application/json' \
