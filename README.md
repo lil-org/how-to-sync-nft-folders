@@ -8,46 +8,45 @@ what could be a good standard way to sync a custom folders structure?
 
 read and write folders in 5 steps
 
-### 1️⃣ upload `SyncedFolderSnapshot` json to ipfs
+### 1️⃣ upload `Snapshot` json to ipfs
 ```swift
-struct SyncedFolderSnapshot: Codable {
-    
+struct Snapshot: Codable {
+    let folders: [Folder]
+    let folderType: Int
     let formatVersion: Int
+    let address: String
     let uuid: String
     let nonce: Int
     let timestamp: Int
-    let ownerAddress: String
-    let rootFolder: SyncedFolder
-    
+    let metadata: String?
 }
 
-struct SyncedFolder: Codable {
-    
+struct Folder: Codable {
     let name: String
-    let nfts: [NftInSyncedFolder]
-    let childrenFolders: [SyncedFolder]
-    
+    let tokens: [Token]
+    let metadata: String?
 }
 
-struct NftInSyncedFolder: Codable {
-
+struct Token: Codable {
     let chainId: String
     let tokenId: String
     let address: String
-    
 }
-
 ```
 
-### 2️⃣ create an attestation with `SyncedFolderSnapshot` ipfs cid
+### 2️⃣ create an attestation with `Snapshot` ipfs cid
 ```swift
-static func attestFolder(address: String, cid: String) -> URL? {
-    let inputString = cid.toPaddedHexString()
-    return URL(string: "\(easScanBase)/attestation/attestWithSchema/\(nftFolderAttestationSchema)#template=\(address)::0:false:\(inputString)")
-}
-```
-https://base.easscan.org/attestation/attestWithSchema/0x39693b21ffe38b11da9ae29437c981de90e56ddb8606ead0c5460ba4a9f93880#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:false:0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000003b6261666b726569626437617376627864676d37746e746c676665636a736d743272686d6f78737a366176756d746175687068756e666872357461790000000000
+let cid = "bafkreidphpnj4fwobwzk5ix4z4xprfxdablkm2wzqn6l4oinv3bt77rfvq"
 
+let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE"
+let folderType: UInt32 = 0
+let formatVersion: UInt32 = 0
+let arguments = String.paddedHexString(cid: cid, folderType: folderType, formatVersion: formatVersion)
+let schemaId = "0xb7cc934d4a5b37542520bfc80184538e568529d5fba5b13abe89109a23620cb6"
+
+let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
+```
+[example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0xb7cc934d4a5b37542520bfc80184538e568529d5fba5b13abe89109a23620cb6#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:false:0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b6261666b726569647068706e6a3466776f62777a6b356978347a3478707266786461626c6b6d32777a716e366c346f696e763362743737726676710000000000)
 
 ### 3️⃣ get the latest attestation
 using [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
@@ -55,45 +54,18 @@ using [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
 curl --request POST \
     --header 'content-type: application/json' \
     --url 'https://base.easscan.org/graphql' \
-    --data '{"query":"query Attestation {\n  attestations(\n    take: 1,\n    orderBy: { timeCreated: desc},\n    where: { schemaId: { equals: \"0x39693b21ffe38b11da9ae29437c981de90e56ddb8606ead0c5460ba4a9f93880\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" } }\n  ) {\n    attester\n    recipient\n    decodedDataJson\n    timeCreated\n  }\n}","variables":{}}'
+    --data '{"query":"query Attestation {\n  attestations(\n    take: 1,\n    orderBy: { timeCreated: desc},\n    where: { schemaId: { equals: \"0xb7cc934d4a5b37542520bfc80184538e568529d5fba5b13abe89109a23620cb6\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" } }\n  ) {\n    attester\n    recipient\n    decodedDataJson\n    timeCreated\n  }\n}","variables":{}}'
 ```
 
-### 4️⃣ get `SyncedFolderSnapshot` json corresponding to the latest attestation
-https://ipfs.decentralized-content.com/ipfs/bafkreibd7asvbxdgm7tntlgfecjsmt2rhmoxsz6avumtauhphunfhr5tay
+### 4️⃣ get `Snapshot` json corresponding to the latest attestation
+https://ipfs.decentralized-content.com/ipfs/bafkreidphpnj4fwobwzk5ix4z4xprfxdablkm2wzqn6l4oinv3bt77rfvq
 
 ### 5️⃣ get nfts from an api of your choice
-use `SyncedFolderSnapshot` to display nfts in folders
-
+use `Snapshot` to display nfts in folders
 
 # alternative options
 
-#### ⁉️ using flat list
-
-```swift
-struct SyncedFolderSnapshot: Codable {
-    
-    let formatVersion: Int
-    let uuid: String
-    let nonce: Int
-    let timestamp: Int
-    let address: String
-    let nfts: [NftInSyncedFolder]
-    
-}
-
-struct NftInSyncedFolder: Codable {
-
-    let chainId: String
-    let tokenId: String
-    let address: String
-    let foldersPath: String // 🆕
-    
-}
-```
-
 #### ⁉️ include a preview image url with each nft to make folder content appear faster
-
-#### ⁉️ no folders in folders (max depth == 1)
 
 # feedback
 ### please [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues) or [create a pull request](https://github.com/lil-org/how-to-sync-nft-folders/pulls)
