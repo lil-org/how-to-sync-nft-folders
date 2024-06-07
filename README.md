@@ -1,8 +1,8 @@
 # syncing custom nft folders
 
-organize nfts into folders and see the same custom folders in zora, opensea, rainbow, etc.
+organize nfts into folders and see the same custom folders on zora, opensea, rainbow, etc.
 
-what could be a good standard way to sync a custom folders structure?
+what could be a good standard way to sync these folders?
 
 # wip approach using [eas](https://docs.attest.org)
 
