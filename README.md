@@ -88,12 +88,6 @@ use `Snapshot` to display nfts in folders
 
 include a preview image url with each nft to make folder content appear faster?
 
-add something else?
-
-change something?
-
-remove something?
-
 # projects syncing folders
 
 [REDACTED] soon
