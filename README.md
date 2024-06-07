@@ -98,8 +98,6 @@ remove something?
 
 [REDACTED] soon
 
-[REDACTED] soon
-
 [nft-folder-macos](https://github.com/lil-org/nft-folder)
 
 add yours too!
