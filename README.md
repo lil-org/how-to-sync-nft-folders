@@ -69,7 +69,7 @@ query Attestation {
     }
 }
 ```
-or try curl
+try curl
 
 ```sh
 curl --request POST \
@@ -84,13 +84,23 @@ https://ipfs.decentralized-content.com/ipfs/bafkreidphpnj4fwobwzk5ix4z4xprfxdabl
 ### 5️⃣ get nfts from an api of your choice
 use `Snapshot` to display nfts in folders
 
-# alternative options
+## other options to consider
 
-#### ⁉️ include a preview image url with each nft to make folder content appear faster
+include a preview image url with each nft to make folder content appear faster?
 
-# projects
+add something else?
 
-[nft folder macos](https://folder.lil.org) wip
+change something?
+
+remove something?
+
+# projects syncing folders
+
+[REDACTED] soon
+
+[REDACTED] soon
+
+[nft-folder-macos](https://github.com/lil-org/nft-folder)
 
 add yours too!
 
