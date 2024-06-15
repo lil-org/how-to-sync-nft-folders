@@ -83,8 +83,6 @@ add an optional preview image url with each nft to make folder content appear fa
 
 add an optional preview image url for a folder?
 
-a special place for favorite and hidden nft folders?
-
 # projects syncing folders
 
 [REDACTED] soon
