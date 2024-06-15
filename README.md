@@ -79,7 +79,11 @@ use `Snapshot` to display nfts in folders
 
 ## other options to consider
 
-include a preview image url with each nft to make folder content appear faster?
+add an optional preview image url with each nft to make folder content appear faster?
+
+add an optional preview image url for a folder?
+
+a special place for favorite and hidden nft folders?
 
 # projects syncing folders
 
