@@ -102,8 +102,8 @@ https://ipfs.decentralized-content.com/ipfs/bafkreifc5lvk2mhi2vtt3lexm433xn7uwdd
 ### 5️⃣ get nfts from an api of your choice
 use `Snapshot` to display nfts in folders
 
-### *️⃣ (optionally) remove folders
-[revoke attestations](https://docs.attest.org/docs/core--concepts/revocation) or create a new attestation with a snapshot using the same uuid
+### ❎ optionally remove folders
+[revoke an attestation](https://docs.attest.org/docs/core--concepts/revocation) or use the same snapshot uuid for a new attestation
 
 # projects syncing folders
 
