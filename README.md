@@ -109,7 +109,9 @@ use `Snapshot` to display nfts in folders
 
 [REDACTED] soon
 
-[nft-folder-macos](https://github.com/lil-org/nft-folder)
+[nft folder macos](https://github.com/lil-org/nft-folder) via folder type `4242424242`
+
+[cherry](https://github.com/jordanpunzalann/cherry) via folder type `69696969`
 
 add yours too!
 
