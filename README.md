@@ -71,9 +71,9 @@ try curl
 
 ```sh
 curl --request POST \
-    --header 'content-type: application/json' \
-    --url 'https://base.easscan.org/graphql' \
-    --data '{"query":"query Attestation {\n    attestations(\n        take: 1,\n        orderBy: { timeCreated: desc },\n        where: { \n            schemaId: { equals: \"0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73\" }, \n            recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" },\n            attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" },\n            data: { contains: \"fcde41b2\"} # corresponds to 4242424242\n        }\n    ) {\n        attester\n        recipient\n        decodedDataJson\n        timeCreated\n    }\n}","variables":{}}'
+     --header 'content-type: application/json' \
+     --url 'https://base.easscan.org/graphql' \
+     --data '{"query":"query Attestation { attestations(take: 1, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"fcde41b2\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
 #### for custom collections assembled by you
 ```graphql
@@ -94,6 +94,14 @@ query Attestation {
         timeCreated
     }
 }
+```
+try curl
+
+```sh
+curl --request POST \
+     --header 'content-type: application/json' \
+     --url 'https://base.easscan.org/graphql' \
+     --data '{"query":"query Attestation { attestations(take: 10, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"4277dc9\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
 
 ### 4️⃣ get `Snapshot` json corresponding to the attestation
