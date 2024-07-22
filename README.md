@@ -113,6 +113,9 @@ use `Snapshot` to display nfts in folders
 ### ❎ optionally remove folders
 [revoke an attestation](https://docs.attest.org/docs/core--concepts/revocation) or use the same snapshot uuid for a new attestation
 
+# improvement proposals
+enforce one folder = one attestation?
+
 # projects syncing folders
 
 [REDACTED] soon
