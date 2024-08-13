@@ -45,7 +45,7 @@ see [example new attestation url](https://base.easscan.org/attestation/attestWit
 ### 3️⃣ get the latest attestations
 using [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
 
-#### for your own nfts organized
+#### 📁 for your own nfts organized
 ```graphql
 query Attestation {
     attestations(
@@ -74,7 +74,7 @@ curl --request POST \
      --url 'https://base.easscan.org/graphql' \
      --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"fcde41b2\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
-#### for custom boards assembled by you
+#### 🍒 for custom boards assembled by you
 ```graphql
 query Attestation {
     attestations(
