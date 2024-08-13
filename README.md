@@ -1,9 +1,3 @@
-# why sync nft folders?
-
-organize [your own nfts](https://warpcast.com/hot/0x9d479b85) or assemble boards [across different owners and authors](https://x.com/artignatyev/status/1803864822129529197)
-
-see the same custom folders on zora, surreal, rainbow, opensea, etc.
-
 # how to sync nft folders?
 
 use [ethereum attestation service](https://docs.attest.org)
