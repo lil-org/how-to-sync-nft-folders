@@ -10,7 +10,7 @@ use [ethereum attestation service](https://docs.attest.org)
 
 1 folder = 1 attestation
 
-read and write folders in 5 steps
+read and write folders in 5 steps:
 
 ### 1️⃣ upload `FolderSnapshot` json to ipfs
 ```swift
@@ -30,12 +30,13 @@ struct Token: Codable {
 
 ### 2️⃣ create an attestation with `FolderSnapshot` ipfs cid
 ```swift
-let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts
-// use 69696969 when assembling custom boards
+let cid = "bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa"
 
 let folderId = Data() // random bytes32 id
 let folderName = "all my zorbs"
-let cid = "bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa"
+
+let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts
+// use 69696969 when assembling custom boards
 
 let schemaId = "0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86"
 let arguments = String.paddedHexString(folderType, folderId, folderName, cid)
@@ -108,21 +109,23 @@ curl --request POST \
      --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"4277dc9\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
 
-### 4️⃣ get `FolderSnapshot` json corresponding to the attestation
+### 4️⃣ get `FolderSnapshot` jsons corresponding to the latest attestations
 https://ipfs.decentralized-content.com/ipfs/bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa
 
 ### 5️⃣ get nfts from an api of your choice
-use the latest `FolderSnapshot`s to display nfts in folders
+use the latest `FolderSnapshot` values to display nfts in folders
+
+---
 
 ### 📝 edit a folder
 create a new attestation using the same `folderId`
 
-use a different `cid` or a different `folderName`
+you can use a different `cid` or a different `folderName`
 
 ### 🗑️ remove a folder
 [revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
 
-or — create a new attestation using the same `folderId` with an empty `cid`
+or — create a new attestation using the same `folderId` with an empty `cid` value
 
 # projects syncing folders
 
