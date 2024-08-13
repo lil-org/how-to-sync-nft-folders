@@ -4,7 +4,9 @@ organize [your own nfts](https://warpcast.com/hot/0x9d479b85) or assemble boards
 
 see the same custom folders on zora, surreal, rainbow, opensea, etc.
 
-# sync folders via [eas](https://docs.attest.org)
+# how to sync nft folders?
+
+use [ethereum attestation service](https://docs.attest.org)
 
 1 folder = 1 attestation
 
@@ -28,15 +30,18 @@ struct Token: Codable {
 
 ### 2️⃣ create an attestation with `FolderSnapshot` ipfs cid
 ```swift
-let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts; use 69696969 when assembling custom boards
-let folderId: Data = Data() // TODO: bytes32 random id
-let folderName: String = "zorbs or smth"
+let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts
+// use 69696969 when assembling custom boards
+
+let folderId = Data() // random bytes32 id
+let folderName = "all my zorbs"
 let cid = "bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa"
 
 let schemaId = "0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86"
 let arguments = String.paddedHexString(folderType, folderId, folderName, cid)
 
-let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner address; can be empty when assembling custom boards
+let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner address
+// recipient can be empty when assembling custom boards
 
 let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
 ```
@@ -109,17 +114,15 @@ https://ipfs.decentralized-content.com/ipfs/bafkreifc5lvk2mhi2vtt3lexm433xn7uwdd
 ### 5️⃣ get nfts from an api of your choice
 use the latest `FolderSnapshot`s to display nfts in folders
 
-## 📝 editing folders
+### 📝 edit a folder
 create a new attestation using the same `folderId`
 
-you can use a different `cid` or a different `folderName`
+use a different `cid` or a different `folderName`
 
-## 🗑️ removing folders
+### 🗑️ remove a folder
 [revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
 
-or
-
-create a new attestation using the same `folderId` with an empty `cid`
+or — create a new attestation using the same `folderId` with an empty `cid`
 
 # projects syncing folders
 
