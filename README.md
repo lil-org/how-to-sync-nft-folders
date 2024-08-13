@@ -1,4 +1,4 @@
-# how to sync nft folders?
+# how to sync nft folders
 
 use [ethereum attestation service](https://docs.attest.org)
 
@@ -114,7 +114,7 @@ use the latest `FolderSnapshot` values to display nfts in folders
 ### 📝 edit a folder
 create a new attestation using the same `folderId`
 
-you can use a different `cid` or a different `folderName`
+use a different `cid` or a different `folderName`
 
 ### 🗑️ remove a folder
 [revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
