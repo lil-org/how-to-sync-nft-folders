@@ -1,3 +1,7 @@
+# [wip] migrating to a new schema 
+
+https://base.easscan.org/schema/view/0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86
+
 # why sync nft folders?
 
 organize [your own nfts](https://warpcast.com/hot/0x9d479b85) or assemble collections [across different owners and authors](https://x.com/artignatyev/status/1803864822129529197)
