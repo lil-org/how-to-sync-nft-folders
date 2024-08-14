@@ -1,3 +1,5 @@
+> organize [your own nfts](https://warpcast.com/hot/0x7455c2f6) or assemble collections [across different owners and authors](https://x.com/artignatyev/status/1803864822129529197)
+
 # how to sync nft folders
 
 use [ethereum attestation service](https://docs.attest.org)
