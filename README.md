@@ -23,11 +23,12 @@ struct Token: Codable {
 ```
 
 ### 2️⃣ create an attestation with `FolderSnapshot` ipfs cid
+
 ```swift
 let cid = "bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa"
 
 let folderId = Data() // random bytes32 id
-let folderName = "all my zorbs"
+let folderName = "zorbs"
 
 let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts
 // use 69696969 when assembling custom boards
@@ -42,8 +43,11 @@ let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + 
 ```
 see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:false:0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000003b6261666b7265696663356c766b326d686932767474336c65786d343333786e377577646461646c7773766e356e33376b7776367370326b6f6170610000000000)
 
+> [!TIP]
+> use `multiAttest`to batch multiple attestations into a single transaction
+
 ### 3️⃣ get the latest attestations
-using [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
+use [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
 
 #### 📁 for your own nfts organized
 ```graphql
@@ -117,9 +121,9 @@ create a new attestation using the same `folderId`
 use a different `cid` or a different `folderName`
 
 ### 🗑️ remove a folder
-[revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
+create a new attestation using the same `folderId` with an empty `cid` value
 
-or — create a new attestation using the same `folderId` with an empty `cid` value
+or — [revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
 
 # projects syncing folders
 
