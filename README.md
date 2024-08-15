@@ -1,5 +1,10 @@
 > organize [your own nfts](https://warpcast.com/hot/0x7455c2f6) or assemble collections [across different owners and authors](https://x.com/artignatyev/status/1803864822129529197)
 
+> [!IMPORTANT]  
+> wip: considering a [more gas efficient schema](https://base.easscan.org/schema/view/0x24a31e6646f2d422a173165d76984a4ee1cfd2bea26be543ba15f7e9319bca4b)
+> 
+> it concats the name and cid into a single string and uses uint8 instead of uint32 for the folder type
+
 # how to sync nft folders
 
 use [ethereum attestation service](https://docs.attest.org)
