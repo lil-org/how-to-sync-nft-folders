@@ -37,7 +37,9 @@ let folderType: UInt32 = 4242424242
 let schemaId = "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a"
 let arguments = String.paddedHexString(folderType, folderName, cid)
 
-let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner address
+let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE"
+
+// recipient = nft owner address
 // recipient can be empty when assembling custom boards
 
 let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
