@@ -68,7 +68,7 @@ query Attestation {
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             recipient: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
-            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders only
             revoked: { equals: false },
             data: { contains: "fcde41b2"} # corresponds to folderType 4242424242
         }
@@ -95,7 +95,7 @@ query Attestation {
         where: { 
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # curator address
-            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders only
             revoked: { equals: false },
             data: { contains: "4277dc9"} # corresponds to folderType 69696969
         }
@@ -112,7 +112,7 @@ query Attestation {
 curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"4277dc9\" } } ) { attester recipient decodedDataJson refUID id } }"}'
 ```
 
-#### 🔄 latest edits
+#### 💦 latest edits
 ```graphql
 query Attestation {
     attestations(
@@ -122,7 +122,7 @@ query Attestation {
         where: { 
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" },
-            refUID: { notIn: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # only edits
+            refUID: { notIn: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # edits only
             revoked: { equals: false },
         },
         distinct: [refUID] # unique and latest
@@ -159,7 +159,7 @@ the next edit for that folder should contain the same `refUID` of the initial at
 ### 🗑️ remove a folder
 set `cid` value to an empty string
 
-or — [revoke](https://docs.attest.org/docs/core--concepts/revocation) the initial attestation for that folder
+or [revoke](https://docs.attest.org/docs/core--concepts/revocation) the initial attestation for that folder
 
 # projects syncing folders
 
