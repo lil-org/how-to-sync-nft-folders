@@ -1,8 +1,5 @@
 > organize [your own nfts](https://warpcast.com/hot/0x7455c2f6) or assemble collections [across different owners and authors](https://x.com/artignatyev/status/1803864822129529197)
 
-> [!WARNING]
-> wip: refining the format
-
 # how to sync nft folders
 
 use [ethereum attestation service](https://docs.attest.org)
@@ -30,23 +27,22 @@ struct Token: Codable {
 ### 2️⃣ create an attestation with `FolderSnapshot` ipfs cid
 
 ```swift
-let cid = "bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa"
-
-let folderId = Data() // random bytes32 id
+let cid = "bafkreiezuaccaqjwt6urnqzk4ko6ukugeutdrhrxgbbgwdyrexnjmim5uy"
 let folderName = "zorbs"
+let folderType: UInt32 = 4242424242
 
-let folderType: UInt32 = 4242424242 // use 4242424242 when you organize your own nfts
+// use 4242424242 when you organize your own nfts
 // use 69696969 when assembling custom boards
 
-let schemaId = "0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86"
-let arguments = String.paddedHexString(folderType, folderId, folderName, cid)
+let schemaId = "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a"
+let arguments = String.paddedHexString(folderType, folderName, cid)
 
 let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner address
 // recipient can be empty when assembling custom boards
 
 let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
 ```
-see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:false:0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000003b6261666b7265696663356c766b326d686932767474336c65786d343333786e377577646461646c7773766e356e33376b7776367370326b6f6170610000000000)
+see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a#template=::0:true:0x00000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000057a6f726273000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b6261666b726569657a7561636361716a77743675726e717a6b346b6f36756b75676575746472687278676262677764797265786e6a6d696d3575790000000000)
 
 > [!TIP]
 > use `multiAttest`to batch multiple attestations into a single transaction
@@ -113,7 +109,7 @@ curl --request POST \
 ```
 
 ### 4️⃣ get `FolderSnapshot` jsons corresponding to the latest attestations
-https://ipfs.decentralized-content.com/ipfs/bafkreifc5lvk2mhi2vtt3lexm433xn7uwddadlwsvn5n37kwv6sp2koapa
+https://ipfs.decentralized-content.com/ipfs/bafkreiezuaccaqjwt6urnqzk4ko6ukugeutdrhrxgbbgwdyrexnjmim5uy
 
 ### 5️⃣ get nfts from an api of your choice
 use the latest `FolderSnapshot` values to display nfts in folders
