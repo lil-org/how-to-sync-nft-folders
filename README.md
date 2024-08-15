@@ -27,7 +27,7 @@ struct Token: Codable {
 ### 2️⃣ create an attestation with `FolderSnapshot` ipfs cid
 
 ```swift
-let cid = "bafkreiezuaccaqjwt6urnqzk4ko6ukugeutdrhrxgbbgwdyrexnjmim5uy"
+let cid = "bafkreia4i7jwb5qq4upcdl5knvgtvvrqhjchsqsot6vozd26vcabgoed44"
 let folderName = "zorbs"
 let folderType: UInt32 = 4242424242
 
@@ -111,7 +111,7 @@ curl --request POST \
 ```
 
 ### 4️⃣ get `FolderSnapshot` jsons corresponding to the latest attestations
-https://ipfs.decentralized-content.com/ipfs/bafkreiezuaccaqjwt6urnqzk4ko6ukugeutdrhrxgbbgwdyrexnjmim5uy
+https://ipfs.decentralized-content.com/ipfs/bafkreia4i7jwb5qq4upcdl5knvgtvvrqhjchsqsot6vozd26vcabgoed44
 
 ### 5️⃣ get nfts from an api of your choice
 use the latest `FolderSnapshot` values to display nfts in folders
