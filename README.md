@@ -42,7 +42,7 @@ let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" // owner address
 
 let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
 ```
-see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a#template=::0:true:0x00000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000057a6f726273000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b6261666b726569657a7561636361716a77743675726e717a6b346b6f36756b75676575746472687278676262677764797265786e6a6d696d3575790000000000)
+see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:true:0x00000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000057a6f726273000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b6261666b726569657a7561636361716a77743675726e717a6b346b6f36756b75676575746472687278676262677764797265786e6a6d696d3575790000000000)
 
 > [!TIP]
 > use `multiAttest`to batch multiple attestations into a single transaction
@@ -58,7 +58,7 @@ query Attestation {
         skip: 0,
         orderBy: { timeCreated: desc },
         where: { 
-            schemaId: { equals: "0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86" }, 
+            schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             recipient: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
             data: { contains: "fcde41b2"} # corresponds to folderType 4242424242
@@ -77,7 +77,7 @@ try curl
 curl --request POST \
      --header 'content-type: application/json' \
      --url 'https://base.easscan.org/graphql' \
-     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"fcde41b2\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
+     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"fcde41b2\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
 #### 🍒 for custom boards assembled by you
 ```graphql
@@ -87,7 +87,7 @@ query Attestation {
         skip: 0,
         orderBy: { timeCreated: desc },
         where: { 
-            schemaId: { equals: "0x8c138d949f94e74f6503a8633bb25982946709fddc196764e26c9325b8c04f73" }, 
+            schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # assembler address
             data: { contains: "4277dc9"} # corresponds to folderType 69696969
         }
@@ -105,7 +105,7 @@ try curl
 curl --request POST \
      --header 'content-type: application/json' \
      --url 'https://base.easscan.org/graphql' \
-     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0xfeb3224bb6737f8f8034186c06f79d0740f40e806965e4b442350a78cef7ec86\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"4277dc9\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
+     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"4277dc9\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
 ```
 
 ### 4️⃣ get `FolderSnapshot` jsons corresponding to the latest attestations
@@ -117,14 +117,17 @@ use the latest `FolderSnapshot` values to display nfts in folders
 ---
 
 ### 📝 edit a folder
-create a new attestation using the same `folderId`
+use [referenced attestations](https://docs.attest.org/docs/tutorials/referenced-attestations)
 
-use a different `cid` or a different `folderName`
+create a new attestation with the `refUID` of the initial attestation for that folder
+
+the next edit for that folder should contain the same `refUID` of the initial attestation
+
 
 ### 🗑️ remove a folder
-create a new attestation using the same `folderId` with an empty `cid` value
+set `cid` value to an empty string
 
-or — [revoke all attestations](https://docs.attest.org/docs/core--concepts/revocation) for that `folderId`
+or — [revoke](https://docs.attest.org/docs/core--concepts/revocation) the initial attestation for that folder
 
 # projects syncing folders
 
