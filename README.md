@@ -67,7 +67,6 @@ query Attestation {
             data: { contains: "fcde41b2"} # corresponds to folderType 4242424242
         }
     ) {
-        attester
         decodedDataJson
         refUID
         id
@@ -75,7 +74,7 @@ query Attestation {
 }
 ```
 ```sh
-curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"fcde41b2\" } } ) { attester decodedDataJson refUID id } }"}'
+curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"fcde41b2\" } } ) { decodedDataJson refUID id } }"}'
 ```
 
 #### 🍒 for custom boards assembled by you
@@ -93,7 +92,6 @@ query Attestation {
             data: { contains: "4277dc9"} # corresponds to folderType 69696969
         }
     ) {
-        attester
         decodedDataJson
         refUID
         id
@@ -101,7 +99,7 @@ query Attestation {
 }
 ```
 ```sh
-curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"4277dc9\" } } ) { attester decodedDataJson refUID id } }"}'
+curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"4277dc9\" } } ) { decodedDataJson refUID id } }"}'
 ```
 
 #### 💦 latest edits
@@ -119,7 +117,6 @@ query Attestation {
         },
         distinct: [refUID] # unique and latest
     ) {
-        attester
         decodedDataJson
         refUID
         id
@@ -127,7 +124,7 @@ query Attestation {
 }
 ```
 ```sh
-curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { notIn: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false } }, distinct: [refUID] ) { attester decodedDataJson refUID id } }"}'
+curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { notIn: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false } }, distinct: [refUID] ) { decodedDataJson refUID id } }"}'
 
 ```
 
