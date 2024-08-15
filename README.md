@@ -4,6 +4,8 @@
 > wip: considering a [more gas efficient schema](https://base.easscan.org/schema/view/0x24a31e6646f2d422a173165d76984a4ee1cfd2bea26be543ba15f7e9319bca4b)
 > 
 > it concats the name and cid into a single string and uses uint8 instead of uint32 for the folder type
+> 
+> everything else remains the same
 
 # how to sync nft folders
 
