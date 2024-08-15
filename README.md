@@ -63,23 +63,23 @@ query Attestation {
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             recipient: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" },
+            revoked: { equals: false },
             data: { contains: "fcde41b2"} # corresponds to folderType 4242424242
         }
     ) {
         attester
         recipient
         decodedDataJson
-        timeCreated
+        refUID
+        id
     }
 }
 ```
 try curl
 
 ```sh
-curl --request POST \
-     --header 'content-type: application/json' \
-     --url 'https://base.easscan.org/graphql' \
-     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"fcde41b2\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
+curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"fcde41b2\" } } ) { attester recipient decodedDataJson refUID id } }"}'
 ```
 #### 🍒 for custom boards assembled by you
 ```graphql
@@ -90,24 +90,24 @@ query Attestation {
         orderBy: { timeCreated: desc },
         where: { 
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
-            attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # assembler address
+            attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # curator address
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" },
+            revoked: { equals: false },
             data: { contains: "4277dc9"} # corresponds to folderType 69696969
         }
     ) {
         attester
         recipient
         decodedDataJson
-        timeCreated
+        refUID
+        id
     }
 }
 ```
 try curl
 
 ```sh
-curl --request POST \
-     --header 'content-type: application/json' \
-     --url 'https://base.easscan.org/graphql' \
-     --data '{"query":"query Attestation { attestations(take: 20, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, data: { contains: \"4277dc9\"} }) { attester recipient decodedDataJson timeCreated } }","variables":{}}'
+curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"4277dc9\" } } ) { attester recipient decodedDataJson refUID id } }"}'
 ```
 
 ### 4️⃣ get `FolderSnapshot` jsons corresponding to the latest attestations
