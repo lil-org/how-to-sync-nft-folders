@@ -42,7 +42,8 @@ let recipient = "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE"
 // recipient = nft owner address
 // recipient can be empty when assembling custom boards
 
-let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + "#template=\(recipient)::0:false:\(arguments)"
+let template = "#template=\(recipient)::0:false:\(arguments)"
+let url = "https://base.easscan.org/attestation/attestWithSchema/" + schemaId + template
 ```
 see [example new attestation url](https://base.easscan.org/attestation/attestWithSchema/0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a#template=0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE::0:true:0x00000000000000000000000000000000000000000000000000000000fcde41b2000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000057a6f726273000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b6261666b726569657a7561636361716a77743675726e717a6b346b6f36756b75676575746472687278676262677764797265786e6a6d696d3575790000000000)
 
@@ -51,6 +52,10 @@ see [example new attestation url](https://base.easscan.org/attestation/attestWit
 
 ### 3️⃣ get the latest attestations
 use [easscan graphql api](https://docs.attest.org/docs/developer-tools/api)
+
+attestations with an empty `refUID` correspond to all created folders
+
+attestations with a non-zero `refUID` correspond to folder edits
 
 #### 📁 for your own nfts organized
 ```graphql
@@ -63,7 +68,7 @@ query Attestation {
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             recipient: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # owner address
-            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" },
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders
             revoked: { equals: false },
             data: { contains: "fcde41b2"} # corresponds to folderType 4242424242
         }
@@ -76,8 +81,6 @@ query Attestation {
     }
 }
 ```
-try curl
-
 ```sh
 curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, recipient: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"fcde41b2\" } } ) { attester recipient decodedDataJson refUID id } }"}'
 ```
@@ -91,7 +94,7 @@ query Attestation {
         where: { 
             schemaId: { equals: "0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a" }, 
             attester: { equals: "0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE" }, # curator address
-            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" },
+            refUID: { equals: "0x0000000000000000000000000000000000000000000000000000000000000000" }, # created folders
             revoked: { equals: false },
             data: { contains: "4277dc9"} # corresponds to folderType 69696969
         }
@@ -104,8 +107,6 @@ query Attestation {
     }
 }
 ```
-try curl
-
 ```sh
 curl --request POST --header 'content-type: application/json' --url 'https://base.easscan.org/graphql' --data '{"query":"query Attestation { attestations(take: 20, skip: 0, orderBy: { timeCreated: desc }, where: { schemaId: { equals: \"0x8c273fb082aea02208b56223fa76cea434c5eaa5dc3c2a5b3bbab474bae5019a\" }, attester: { equals: \"0xE26067c76fdbe877F48b0a8400cf5Db8B47aF0fE\" }, refUID: { equals: \"0x0000000000000000000000000000000000000000000000000000000000000000\" }, revoked: { equals: false }, data: { contains: \"4277dc9\" } } ) { attester recipient decodedDataJson refUID id } }"}'
 ```
