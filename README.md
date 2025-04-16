@@ -152,11 +152,7 @@ or [revoke](https://docs.attest.org/docs/core--concepts/revocation) the initial 
 
 # projects syncing folders
 
-[nft folder macos](https://github.com/lil-org/nft-folder) to organize your own nfts via folder type `42`
-
-[cherry](https://github.com/jordanpunzalann/cherry) to assemble custom boards via folder type `69`
-
-add yours too!
+[CANCELED]
 
 # feedback
 ### [create an issue](https://github.com/lil-org/how-to-sync-nft-folders/issues) or [create a pull request](https://github.com/lil-org/how-to-sync-nft-folders/pulls)
